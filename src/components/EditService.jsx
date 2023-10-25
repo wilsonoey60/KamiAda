@@ -7,8 +7,8 @@ class EditService extends React.Component {
 
     // inisialisasi state
     this.state = {
-      nameservice: '',
-      descriptionservice: '',
+      nameservice: undefined,
+      descriptionservice: undefined,
     }
 
     this.onNameChangeEventHandler = this.onNameChangeEventHandler.bind(this);
