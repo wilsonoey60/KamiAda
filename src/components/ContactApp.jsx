@@ -60,7 +60,7 @@ class ContactApp extends React.Component {
       return (
         <div className='contact-app'>
           <header className='contact-app__header'>
-            <h1>Aplikasi Kontak</h1>
+            <h1>Kami Ada</h1>
           </header>
           <main>
             <Routes>
@@ -75,7 +75,7 @@ class ContactApp extends React.Component {
     return (
       <div className="contact-app">
         <header className='contact-app__header'>
-          <h1>Aplikasi Kontak</h1>
+          <h1>Kami Ada</h1>
           <Navigation logout={this.onLogout} name={this.state.authedUser.name} />
         </header>
         <main>
