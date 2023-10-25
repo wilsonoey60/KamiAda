@@ -57,7 +57,7 @@ async function register({ username, emailuser, passworduser, avataruser, roleuse
 }
 
 async function getUserLogged() {
-  const response = await fetchWithToken(`${BASE_URL}/user/profile`);
+  const response = await fetchWithToken(`${BASE_URL}/pearson/profile`);
   const responseJson = await response.json();
 
   if (responseJson.status !== 'success') {
@@ -142,27 +142,3 @@ export {
   getContacts,
   deleteContact 
 }
-
-// async function dashboarduser(request, h) {
-//   try {
-//     // const verify = request.state.refreshToken;
-//     // const verificator = TokenManager.verifyRefreshToken(verify);
-//     const verificator = request.auth.credentials;
-//     const selectuser = 'SELECT userskad.username, userskad.avataruser, serviceskad.* FROM userskad';
-//     const query = `${selectuser} LEFT JOIN serviceskad ON userskad.iduser = serviceskad.iduser WHERE userskad.iduser = ?`;
-//     return new Promise((resolve, reject) => {
-//       connection.query(query, verificator.iduser, (error, results) => error ? reject(error) : () => {
-//         if (results.length > 0) {
-//           resolve(h.response(successwithdataANDcount(
-//             results.length, 'Dashboard berhasil ditampilkan', results
-//           )).code(200));
-//         } else {
-//           resolve(h.response(notfound('Dashboard tidak ditemukan')).code(404));
-//         }
-//       });
-//     });
-//   } catch (error) {
-//     const { stack } = error;
-//     return h.response(servererror(stack));
-//   }
-// }
