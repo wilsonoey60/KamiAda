@@ -1,5 +1,3 @@
-const BASE_URL = 'https://wilsonoey.helioho.st';
-
 function getAccessToken() {
   return localStorage.getItem('accessToken')
 }
@@ -19,7 +17,7 @@ async function fetchWithToken(url, options = {}) {
 }
 
 async function login({ emailuser, passworduser }) {
-  const response = await fetch(`${BASE_URL}/pearson/login`, {
+  const response = await fetch(`${process.env.LOGIN}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -38,7 +36,7 @@ async function login({ emailuser, passworduser }) {
 }
 
 async function register({ username, emailuser, passworduser, avataruser, roleuser, statususer }) {
-  const response = await fetch(`${BASE_URL}/pearson/register`, {
+  const response = await fetch(`${process.env.REGISTER}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -57,7 +55,7 @@ async function register({ username, emailuser, passworduser, avataruser, roleuse
 }
 
 async function getUserLogged() {
-  const response = await fetchWithToken(`${BASE_URL}/pearson/profile`);
+  const response = await fetchWithToken(`${process.env.GET_USER_WITH_AUTH}`);
   const responseJson = await response.json();
 
   if (responseJson.status !== 'success') {
@@ -68,7 +66,7 @@ async function getUserLogged() {
 }
 
 async function addContact({ nameservice, descriptionservice }) {
-  const response = await fetchWithToken(`${BASE_URL}/pearson/service/add`, {
+  const response = await fetchWithToken(`${process.env.ADD_SERVICE}`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -87,7 +85,7 @@ async function addContact({ nameservice, descriptionservice }) {
 }
 
 async function getContacts() {
-  const response = await fetchWithToken(`${BASE_URL}/dashboard`);
+  const response = await fetchWithToken(`${process.env.DASHBOARD}`);
   const responseJson = await response.json();
 
   if (responseJson.status !== 'success') {
@@ -99,7 +97,7 @@ async function getContacts() {
 }
 
 async function getServicebyID(idservice) {
-  const response = await fetchWithToken(`${BASE_URL}/service/${idservice}`);
+  const response = await fetchWithToken(`${process.env.GET_DETAIL_SERVICE}/${idservice}`);
   const responseJson = await response.json();
 
   if (responseJson.status !== 'success') {
@@ -112,7 +110,7 @@ async function getServicebyID(idservice) {
 
 async function editservice( idservice, { nameservice, descriptionservice }) {
   console.log(idservice, nameservice, descriptionservice);
-  const response = await fetchWithToken(`${BASE_URL}/pearson/service/${idservice}`, {
+  const response = await fetchWithToken(`${process.env.EDIT_SERVICE}/${idservice}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
@@ -131,7 +129,7 @@ async function editservice( idservice, { nameservice, descriptionservice }) {
 }
 
 async function deleteContact(idservice) {
-  const response = await fetchWithToken(`${BASE_URL}/pearson/service/${idservice}`, {
+  const response = await fetchWithToken(`${process.env.DELETE_SERVICE}/${idservice}`, {
     method: 'DELETE',
   });
 
