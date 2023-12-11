@@ -1,3 +1,5 @@
+import 'dotenv/config';
+
 function getAccessToken() {
   return localStorage.getItem('accessToken')
 }
