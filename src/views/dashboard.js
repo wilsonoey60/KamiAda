@@ -14,6 +14,7 @@ function Dashboard() {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const [services, setServices] = useState([]);
+  const [user, setUser] = useState({});
   const [keyword, setKeyword] = useState(() => {
     return searchParams.get('keyword') || ''
   });
@@ -22,7 +23,8 @@ function Dashboard() {
     const fetchData = async () => {
       try {
         const { data } = await getMyServices();
-        setServices(data);
+        setServices(data.services);
+        setUser(data);
       } catch (error) {
         console.error('Error fetching contacts:', error);
       }
@@ -48,7 +50,7 @@ function Dashboard() {
   return (
     <div className="dashboard-container">
       <Helmet>
-        <title>Beranda {`${services.map(item => item.username)[0]}`} - KamiAda</title>
+        <title>Beranda {`${user.username}`} - KamiAda</title>
         <meta property="og:title" content="Dashboard - KamiAda" />
       </Helmet>
       <div className="dashboard-fixed-header">
