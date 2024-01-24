@@ -75,8 +75,8 @@ async function updateProfile(iduser, { avataruser, username, completename }) {
   return { error: false };
 }
 
-async function deleteProfile(iduser) {
-  const response = await fetchWithToken(`${BASE_URL}/user/${iduser}`, {
+async function deleteProfile() {
+  const response = await fetchWithToken(`${BASE_URL}/user`, {
     method: 'DELETE',
   });
 
@@ -88,7 +88,6 @@ async function deleteProfile(iduser) {
   }
 
   return { error: false };
-
 }
 
 async function getUserLogged() {
