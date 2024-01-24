@@ -19,7 +19,7 @@ function DetailProfile({ profile }) {
           label: 'Ya',
           onClick: async() => {
             // Add your delete logic here
-            const { error } = await deleteProfile(profile.iduser);
+            const { error } = await deleteProfile();
             if (!error) {
               navigate('/');
             }
