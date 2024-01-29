@@ -1,28 +1,22 @@
 import React, { useEffect } from 'react'
 import FormUpdateProfile from '../components/forms/form-editprofil'
 import { useNavigate } from 'react-router-dom';
-import { editservice } from '../utils/api';
+import { updateProfile } from '../utils/api';
 
 function EditProfile() {
   const navigate = useNavigate();
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const { data } = await editservice();
-  //       setServices(data);
-  //     } catch (error) {
-  //       console.error('Error fetching contacts:', error);
-  //     }
-  //   };
+  useEffect(() => {
+    const token = localStorage.getItem('accessToken');
+    if (token === null) {
+      navigate('/login');
+    }
+  });
 
-  //   fetchData();
-  //   const token = localStorage.getItem('accessToken');
-  //   if (token === null) {
-  //     navigate('/login');
-  //   }
-  // }, []);
+  function onEditServiceHandler(service) {
+    updateProfile(service);
+  }
 
-  return (<><FormUpdateProfile /></>)
+  return (<><FormUpdateProfile edit={onEditServiceHandler} /></>)
 }
 
-export default EditProfile
+export default EditProfile;
