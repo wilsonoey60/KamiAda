@@ -56,8 +56,8 @@ async function register({ username, emailuser, passworduser, avataruser, roleuse
   return { error: false };
 }
 
-async function updateProfile(iduser, { avataruser, username, completename }) {
-  const response = await fetchWithToken(`${BASE_URL}/user/${iduser}`, {
+async function updateProfile({ avataruser, username, completename }) {
+  const response = await fetchWithToken(`${BASE_URL}/user/`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
