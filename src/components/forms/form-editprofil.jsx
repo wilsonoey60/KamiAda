@@ -8,17 +8,21 @@ import Inputs from '../inputs/inputs';
 import useInput from '../../hooks/useInput';
 
 function FormUpdateProfile({ edit }) {
-	const [avataruser, onAvataruserChange] = useInput('');
+  const [avataruser, onAvataruserChange] = useInput('');
   const [username, onUsernameChange] = useInput('');
   const [completename, onCompletenameChange] = useInput('');
 
 	const onSubmitHandler = (event) => {
     event.preventDefault();
-    edit({
-			avataruser: avataruser,
+    const editedUser = {
+      avataruser: avataruser,
       username: username,
       completename: completename,
-    });
+    };
+    const filteredEditedUser = Object.fromEntries(
+      Object.entries(editedUser).filter(([_, value]) => value !== '' && value !== null)
+    );
+    edit(filteredEditedUser);
   };
 
   return (
