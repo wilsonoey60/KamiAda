@@ -14,6 +14,7 @@ function EditProfile() {
 
   function onEditServiceHandler(service) {
     updateProfile(service);
+    navigate(`/profile`);
   }
 
   return (<><FormUpdateProfile edit={onEditServiceHandler} /></>)
