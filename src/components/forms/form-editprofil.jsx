@@ -12,7 +12,7 @@ function FormUpdateProfile({ edit }) {
   const [username, onUsernameChange] = useInput('');
   const [completename, onCompletenameChange] = useInput('');
 
-	const onSubmitHandler = (event) => {
+  const onSubmitHandler = (event) => {
     event.preventDefault();
     const editedUser = {
       avataruser: avataruser,
