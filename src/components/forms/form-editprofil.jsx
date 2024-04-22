@@ -22,6 +22,7 @@ function FormUpdateProfile({ edit }) {
     const filteredEditedUser = Object.fromEntries(
       Object.entries(editedUser).filter(([_, value]) => value !== '' && value !== null)
     );
+    console.log(filteredEditedUser);
     edit(filteredEditedUser);
   };
 
