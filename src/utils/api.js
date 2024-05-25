@@ -1,4 +1,4 @@
-const BASE_URL = 'https://wilsonoey.helioho.st';
+const BASE_URL = process.env.BASE_URL;
 
 function getAccessToken() {
   return localStorage.getItem('accessToken');
