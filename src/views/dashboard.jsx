@@ -44,7 +44,11 @@ function Dashboard() {
 
   // Filter services based on keyword
   const filteredServices = services.filter(service => {
-    return service.nameservice.toLowerCase().includes(keyword.toLowerCase());
+    if (service.name > 0) {
+      return service.nameservice.toLowerCase().includes(keyword.toLowerCase());
+    } else {
+      return false;
+    }
   });
 
   return (
